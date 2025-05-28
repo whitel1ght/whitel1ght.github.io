@@ -1,7 +1,7 @@
 ---
 title: 'Dynamic Pinia Modules'
 description: 'Creaing Pinia modules dynamically'
-pubDate: 'Jul 08 2022'
+pubDate: 'May 28 2025'
 heroImage: '/pine.jpg'
 ---
 
