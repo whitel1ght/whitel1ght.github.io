@@ -2,7 +2,7 @@
 title: 'Dynamic Pinia Modules'
 description: 'Creaing Pinia modules dynamically'
 pubDate: 'Jul 08 2022'
-heroImage: '/pine.png'
+heroImage: '/pine.jpg'
 ---
 
 **TLDR;** This post explains how to dynamically create Pinia store modules in Vue projects, especially when dealing with multiple similar pages like admin tables. Instead of defining a separate store for each table, you can use a factory function to generate stores with customizable initial state. This approach reduces repetition and simplifies state management for features like paging across different tables. Example code demonstrates how to implement and use the factory for different tables.
@@ -41,12 +41,20 @@ import { defineStore } from 'pinia'
 
 function createPiniaStore ({ moduleName, state = {} }) {
   return defineStore(moduleName, () => {
-    const initialState = { page: 1, perPage: 10, descending: false, ...state }
+    const initialState = {
+      page: 1,
+      perPage: 10,
+      descending: false,
+      ...state
+    }
     const tableOptions = ref({ ...initialState })
 
+    // you might want to reset state easily
     function reset() {
       Object.assign(tableOptions.value, initialState)
     }
+
+    // you can put any actionsg/getters
 
     return { tableOptions }
   })
